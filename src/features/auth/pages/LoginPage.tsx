@@ -21,8 +21,8 @@ export function LoginPage() {
 
     try {
       await loginMutation.mutateAsync({ email, password });
-      // 로그인 성공 시 마이페이지로 이동
-      navigate('/my-invitations');
+      // 로그인 성공 시 대시보드로 이동
+      navigate('/dashboard');
     } catch (error: any) {
       // 디버깅용 에러 로그
       logErrorResponse(error, '로그인');

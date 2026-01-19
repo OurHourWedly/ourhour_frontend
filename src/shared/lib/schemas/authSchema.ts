@@ -30,13 +30,7 @@ export const AuthResponseSchema = z.object({
   tokenType: z.literal('Bearer'),
 });
 
-export const RefreshResponseSchema = z.object({
-  access: z.string(),
-  refresh: z.string(),
-});
-
 // TypeScript 타입 추론
 export type User = z.infer<typeof UserSchema>;
 export type AuthResponse = z.infer<typeof AuthResponseSchema>;
-export type RefreshResponse = z.infer<typeof RefreshResponseSchema>;
 

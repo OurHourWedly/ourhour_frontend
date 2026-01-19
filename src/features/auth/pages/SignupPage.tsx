@@ -40,8 +40,8 @@ export function SignupPage() {
         name,
         phone,
       });
-      // 회원가입 성공 시 마이페이지로 이동
-      navigate('/my-invitations');
+      // 회원가입 성공 시 대시보드로 이동
+      navigate('/dashboard');
     } catch (error: any) {
       // 디버깅용 에러 로그
       logErrorResponse(error, '회원가입');

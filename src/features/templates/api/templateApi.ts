@@ -34,7 +34,7 @@ export const templateApi = {
     
     // 런타임 검증
     try {
-      return TemplateListResponseSchema.parse(response.data);
+    return TemplateListResponseSchema.parse(response.data);
     } catch (error) {
       console.error('템플릿 스키마 검증 실패:', error);
       console.error('응답 데이터:', response.data);
@@ -60,7 +60,7 @@ export const templateApi = {
     
     // 런타임 검증
     try {
-      return TemplateDetailSchema.parse(response.data);
+    return TemplateDetailSchema.parse(response.data);
     } catch (error) {
       console.error('템플릿 스키마 검증 실패:', error);
       console.error('응답 데이터:', response.data);

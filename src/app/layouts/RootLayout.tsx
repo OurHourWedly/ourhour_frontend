@@ -1,8 +1,8 @@
 import { Outlet, Link, useNavigate } from 'react-router-dom';
-import { useMe } from '@/features/auth/api/authApi';
+import { useAuth } from '@/shared/hooks/useAuth';
 
 export function RootLayout() {
-  const { data: user, isLoading } = useMe();
+  const { user, isLoading } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -26,18 +26,18 @@ export function RootLayout() {
             <span>로딩 중...</span>
           ) : user ? (
             <>
-              <Link
+            <Link
                 to="/dashboard"
-                style={{
-                  padding: '8px 16px',
-                  textDecoration: 'none',
-                  color: '#1976d2',
-                  border: '1px solid #1976d2',
-                  borderRadius: '4px',
-                }}
-              >
-                마이페이지
-              </Link>
+              style={{
+                padding: '8px 16px',
+                textDecoration: 'none',
+                color: '#1976d2',
+                border: '1px solid #1976d2',
+                borderRadius: '4px',
+              }}
+            >
+              마이페이지
+            </Link>
               <Link
                 to="/settings"
                 style={{

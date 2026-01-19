@@ -3,10 +3,8 @@ import apiClient from '@/shared/lib/apiClient';
 import { QUERY_KEYS } from '@/shared/lib/queryKeys';
 import {
   AuthResponseSchema,
-  RefreshResponseSchema,
   UserSchema,
   type AuthResponse,
-  type RefreshResponse,
   type User,
 } from '@/shared/lib/schemas/authSchema';
 import type { SignupRequest, LoginRequest } from '@/shared/types/api';
@@ -18,7 +16,7 @@ export const authApi = {
     // 런타임 검증
     const validatedData = AuthResponseSchema.parse(response.data);
     // 토큰 저장
-    localStorage.setItem('accessToken', validatedData.accessToken);
+      localStorage.setItem('accessToken', validatedData.accessToken);
     localStorage.setItem('refreshToken', validatedData.refreshToken);
     return validatedData;
   },
@@ -34,23 +32,12 @@ export const authApi = {
     return validatedData;
   },
 
-  // 토큰 갱신
-  refreshToken: async (refreshToken: string): Promise<RefreshResponse> => {
-    const response = await apiClient.post('/auth/refresh/', { refresh: refreshToken });
-    // 런타임 검증
-    const validatedData = RefreshResponseSchema.parse(response.data);
-    // 새 토큰 저장
-    localStorage.setItem('accessToken', validatedData.access);
-    localStorage.setItem('refreshToken', validatedData.refresh);
-    return validatedData;
-  },
-
   // 현재 사용자 정보 조회
   getMe: async (): Promise<User | null> => {
     try {
-      const response = await apiClient.get('/auth/me/');
-      // 런타임 검증
-      return UserSchema.parse(response.data);
+    const response = await apiClient.get('/auth/me/');
+    // 런타임 검증
+    return UserSchema.parse(response.data);
     } catch (error: any) {
       // 401 에러는 로그인하지 않은 상태를 의미하므로 null 반환 (에러가 아님)
       if (error.response?.status === 401) {
